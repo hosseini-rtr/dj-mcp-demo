@@ -3,11 +3,22 @@ services:
   web:
     build: .
     container_name: dj-mcp
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8009
     env_file:
       - .env
     ports:
       - "8000:8000"
     volumes:
       - .:/app
-    
+
+  ollama:
+    image: docker.arvancloud.ir/ollama/ollama:latest
+    container_name: dj-mcp-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
