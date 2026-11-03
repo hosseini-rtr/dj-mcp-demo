@@ -108,8 +108,8 @@ The Agent does not contain hardcoded business tool definitions. New MCP tools ca
 
 The interaction follows the standard tool-calling workflow:
 
-1. The user submits a natural-language request.
-2. The Agent retrieves available tools from the MCP Server.
+1. The Agent retrieves available tools from the MCP Server.
+2. The user submits a natural-language request.
 3. The Agent sends the conversation and tool definitions to the LLM.
 4. The LLM either generates a direct response or returns `tool_calls`.
 5. If tool calls are returned, the Agent executes each requested MCP tool.
@@ -124,9 +124,9 @@ sequenceDiagram
     participant LLM
     participant MCP
 
-    User->>Agent: Natural language request
     Agent->>MCP: List available tools
     MCP-->>Agent: Tool definitions
+    User->>Agent: Natural language request
     Agent->>LLM: Messages + tools
 
     alt Tool calls requested
