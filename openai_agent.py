@@ -127,7 +127,7 @@ async def run_agent(prompt: str):
 
                         tool_output = serialize_tool_result(result)
 
-                        if result.isError:
+                        if result.is_error:
                             tool_output = json.dumps(
                                 {"error": tool_output},
                                 ensure_ascii=False,
